@@ -13,6 +13,9 @@ app.listen(Port, (err) => {
 
   }
 });
-// app.get('/', (req, res) => {
-//   res.json('hey');
-// });
+app.get('/styles', (req, res) => {
+  res.sendFile(path.join(__dirname, '/client', 'styles.html'));
+});
+app.get('/products', (req, res) => {
+  res.sendFile(path.join(__dirname, '/client', 'products.html'));
+});
