@@ -1,0 +1,19 @@
+{
+  "name": "supernaturalcurls",
+  "version": "1.0.0",
+  "description": "Search Tool for Super Natural Curlies",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nicole Creshon",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^4.13.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0"
+  },
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
