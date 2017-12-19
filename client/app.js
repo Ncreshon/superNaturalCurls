@@ -1,46 +1,38 @@
 const App = angular.module('App', []);
 
 
-App.factory('Search',  $http => ({
+App.factory('Search', $http => ({
   styleSearch: query => $http({
     method: 'GET',
     url: '/styles',
     headers: { search: query },
-  }).then( (videos) => {
-    console.log(videos.data.items)
-    // $scope.styleVideos = videos.data
-  })
-  .catch((err) => {
-    console.log(err);
   }),
 
   productSearch: query => $http({
     method: 'GET',
     url: '/products',
     headers: { search: query },
-    }).then( videos => {
-      console.log(videos.data.items)
-    }).catch( err => {
-      console.log(err);
   }),
-  
-
-
-
 }));
-
-
 App.controller('AppCtrl', ($scope, Search) => {
   $scope.styletext;
+  $scope.producttext;
   $scope.styleVideos = [];
   $scope.productVideos = [];
-  $scope.producttext;
   $scope.productsubmit = () => {
-    Search.productSearch($scope.producttext);
+    Search.productSearch($scope.producttext).then((videos) => {
+      $scope.productVideos = videos.data.items;
+      console.log($scope.productVideos);
+    }).catch((err) => {
+      console.log(err);
+    });
   };
   $scope.stylesubmit = () => {
-    Search.styleSearch($scope.styletext);
+    Search.styleSearch($scope.styletext).then((videos) => {
+      $scope.styleVideos = videos.data.items;
+    })
+      .catch((err) => {
+        console.log(err);
+      });
   };
-
-
 });
