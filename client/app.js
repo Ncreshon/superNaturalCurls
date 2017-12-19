@@ -47,4 +47,11 @@ App.controller('AppCtrl', ($scope, Search) => {
     $scope.video = video;
    console.log($scope.video)
   };
+
+  $scope.favorite = (video) => {
+    console.log(video);
+  },
+  $scope.unlike = (video) => {
+    console.log(video);
+  }
 });
