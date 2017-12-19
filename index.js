@@ -30,13 +30,16 @@ app.listen(Port, (err) => {
 app.get('/styles', (req, res) => {
   const url = 'https://www.googleapis.com/youtube/v3/search';
   const query = `${req.headers.search} natural hair styles`;
-  youtubeSearch.youtubeSearch(query);
+  youtubeSearch.youtubeSearch(query).then(videos => {
+    res.send(videos.data)
+  }).catch(err => {console.error(err)});
 
 });
 
 
 app.get('/products', (req, res) => {
   const query = `${req.headers.search} product reviews`;
-  console.log(query)
-  youtubeSearch.youtubeSearch(query)
+  youtubeSearch.youtubeSearch(query).then(videos => {
+    res.send(videos.data)
+  }).catch(err => { console.error(err) })
 });
