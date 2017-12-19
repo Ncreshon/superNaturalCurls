@@ -16,13 +16,19 @@ db.once('open', () => {
 
 const favoriteSchema = new Schema({
   title: String,
-  favorite: Boolean,
-  description: String,
-  url: String,
+  tried: Boolean,
+  urlId: String,
+  image: String,
 
 });
 
 
 const Favorite = mongoose.model('Favorite', favoriteSchema);
 
-// module.exports.Favorite = Favorite;
+const saveFav = (obj) => {
+  const fav = new Favorite(obj);
+  fav.save(err => console.error(err));
+};
+
+module.exports.Favorite = Favorite;
+module.exports.saveFav = saveFav;

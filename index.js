@@ -42,5 +42,12 @@ app.get('/products', (req, res) => {
 });
 
 app.post('/favorite', (req, res) => {
-   console.log(req.body);
-})
+  const video = req.body.video;
+  const entry = {
+    title: video.snippet.title,
+    tried: false,
+    urlId: video.id.videoId,
+    image: video.snippet.thumbnails.default.url,
+  };
+  db.saveFav(entry)
+});

@@ -44,9 +44,11 @@
   </form>
   <div></div>
 
-  <div ng-repeat='video in productVideos'>
-    <img src={{video.snippet.thumbnails.default.url}}> 
-    <div ng-click='titleSelect(video)'> {{video.snippet.title}}
+  <div class='title' ng-repeat='video in productVideos'>
+     
+    <div ng-click='titleSelect(video)'> 
+      <img src={{video.snippet.thumbnails.default.url}}>
+       {{video.snippet.title}}
 
     </div>
   </div>
@@ -57,10 +59,12 @@
     <button ng-click='stylesubmit()'> Style Search</button>
   </form>
 
-  <div ng-repeat='video in styleVideos'> <img src={{video.snippet.thumbnails.default.url}}>
-    <div ng-click='titleSelect(video)'> {{video.snippet.title}}
-    
+  <div ng-repeat='video in styleVideos'> 
+    <div class='title' ng-click='titleSelect(video)'>
+      <img src={{video.snippet.thumbnails.default.url}}>
+       {{video.snippet.title}}
     </div>
+    
   </div>
 
 
