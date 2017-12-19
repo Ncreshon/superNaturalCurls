@@ -19,8 +19,9 @@
 
 h1 {
   font-family: Lobster;
-  color: 'pink'
+  color: pink;
+  
 }
- body {
+ h2 {
    color: purple;
  }

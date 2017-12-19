@@ -16,7 +16,7 @@ App.factory('Search', $http => ({
 }));
 App.controller('AppCtrl', ($scope, Search) => {
   $scope.styletext;
-  $scope.producttext;
+  this.producttext;
   $scope.styleVideos = [];
   $scope.productVideos = [];
   $scope.productsubmit = () => {
@@ -30,6 +30,7 @@ App.controller('AppCtrl', ($scope, Search) => {
   $scope.stylesubmit = () => {
     Search.styleSearch($scope.styletext).then((videos) => {
       $scope.styleVideos = videos.data.items;
+      console.log($scope.styleVideos)
     })
       .catch((err) => {
         console.log(err);
