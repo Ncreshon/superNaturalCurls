@@ -30,6 +30,16 @@ App.factory('Search', $http => ({
     },
     data: { video: video },
   }),
+  
+  upSearch: video => $http({
+    method: 'POST',
+    url: '/upvote',
+    headers: {
+      'Content-Type': "application/json",
+    },
+    data: { video: video },
+  }),
+
 }));
 App.controller('AppCtrl', ($scope, $sce, Search) => {
   $scope.producttext;
@@ -72,5 +82,8 @@ App.controller('AppCtrl', ($scope, $sce, Search) => {
     Search.unlikeSearch(video)
       .then(response => console.log(response))
       .catch(err => console.log(err))
+  };
+  $scope.upvote = (video) => {
+    Search.upSearch(video)
   };
 });

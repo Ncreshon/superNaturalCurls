@@ -27,14 +27,22 @@
 
   <iframe width="420" height="315" ng-src="{{trustSrc(test + video.id.videoId)}}"/>
   </iframe>
-  
-
+  <div>
+<!-- like button -->
 <a ng-click="favorite(video)" class="btn btn-primary">
-  <span class="glyphicon glyphicon-thumbs-up"></span> Slay Sis</a>
-
+  <span class="glyphicon glyphicon-heart"></span> Must try</a>
+  
+  <!-- unlike button -->
   <a ng-click="unlike(video)" class="btn btn-danger">
-    <span class="glyphicon glyphicon-thumbs-down"></span> Nah, Sis Not for Me</a>
+    <span class="glyphicon glyphicon-trash"></span> It's trash</a>
 
+    <!-- upvote -->
+    <a ng-click="upvote(video)" class="btn btn-info">
+      <span class="glyphicon glyphicon-thumbs-up"></span> Sis, this is everything!</a>
+
+      <a href="#" class="btn btn-info">
+        <span class="glyphicon glyphicon-thumbs-down"></span> Sis, what are you thinking?</a>
+     </div>
 
 
   <h2>Super Natural Products</h2>

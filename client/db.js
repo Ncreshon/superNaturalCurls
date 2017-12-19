@@ -16,7 +16,7 @@ db.once('open', () => {
 
 const favoriteSchema = new Schema({
   title: String,
-  tried: Boolean,
+  rating: Number,
   urlId: String,
   image: String,
 
@@ -32,9 +32,16 @@ const saveFav = (obj) => {
 
 const unlike = (obj) => {
   Favorite.remove(obj, err => console.error(err));
-
 };
+
+const upVote = (obj) => {
+  Favorite.update(obj, { $inc: { rating: 1 } }, err => {
+    console.error(err)
+  });
+}
+
 
 module.exports.Favorite = Favorite;
 module.exports.saveFav = saveFav;
 module.exports.unlike = unlike;
+module.exports.upVote = upVote;

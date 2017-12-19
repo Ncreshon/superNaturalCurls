@@ -45,14 +45,20 @@ app.post('/favorite', (req, res) => {
   const video = req.body.video;
   const entry = {
     title: video.snippet.title,
-    tried: false,
+    rating: 0,
     urlId: video.id.videoId,
     image: video.snippet.thumbnails.default.url,
   };
-  db.saveFav(entry)
+  db.saveFav(entry);
+  res.send('favorited');
 });
 
 app.post('/unlike', (req, res) => {
   const video = req.body.video;
  db.unlike({ urlId: video.id.videoId });
+ res.send('deleted');
+});
+app.post('/upvote', (req, res) => {
+  const id = {urlId: req.body.video.id.videoId}
+db.upVote(id);
 });
