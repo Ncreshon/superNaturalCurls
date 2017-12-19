@@ -14,8 +14,7 @@ db.once('open', () => {
   console.log('connection open');
 });
 
-
-const styleSchema = new Schema({
+const favoriteSchema = new Schema({
   title: String,
   favorite: Boolean,
   description: String,
@@ -23,15 +22,7 @@ const styleSchema = new Schema({
 
 });
 
-const productSchema = new Schema({
-  title: String,
-  favorite: Boolean,
-  description: String,
-  url: String,
 
-});
+const Favorite = mongoose.model('Favorite', favoriteSchema);
 
-const StyleFavs = mongoose.model('Style', styleSchema);
-
-const ProductFavs = mongoose.model('Product', productSchema);
-
+// module.exports.Favorite = Favorite;

@@ -13,15 +13,23 @@ App.factory('Search', $http => ({
     url: '/products',
     headers: { search: query },
   }),
+
+  favoriteSearch: video => $http({
+    method: 'POST',
+    url: '/favorite',
+    headers: {
+      'Content-Type': "application/json",
+    },
+    data: { video: video },
+  }),
 }));
 App.controller('AppCtrl', ($scope, $sce, Search) => {
-  
   $scope.producttext;
-  $scope.video = { id: { videoId: 'N8XCXdmM9nM'}};
+  $scope.video = { id: { videoId: 'N8XCXdmM9nM' } };
   $scope.test = 'https://www.youtube.com/embed/';
   $scope.trustSrc = function (src) {
     return $sce.trustAsResourceUrl(src);
-  }
+  };
   $scope.styleVideos = [];
   $scope.productVideos = [];
   $scope.productsubmit = () => {
@@ -42,13 +50,18 @@ App.controller('AppCtrl', ($scope, $sce, Search) => {
   };
   $scope.titleSelect = (video) => {
     $scope.video = video;
-  };
-  
+  },
+
 
   $scope.favorite = (video) => {
-    console.log(video);
-  },
+    console.log(video.snippet)
+    
+    Search.favoriteSearch(video)
+    .then(response => console.log(response))
+    .catch(err => console.log(err))
+  }
+
   $scope.unlike = (video) => {
     console.log(video);
-  }
+  };
 });

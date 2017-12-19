@@ -41,3 +41,6 @@ app.get('/products', (req, res) => {
   }).catch((err) => { console.error(err); });
 });
 
+app.post('/favorite', (req, res) => {
+   console.log(req.body);
+})
