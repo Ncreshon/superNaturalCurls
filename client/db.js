@@ -30,5 +30,11 @@ const saveFav = (obj) => {
   fav.save(err => console.error(err));
 };
 
+const unlike = (obj) => {
+  Favorite.remove(obj, err => console.error(err));
+
+};
+
 module.exports.Favorite = Favorite;
 module.exports.saveFav = saveFav;
+module.exports.unlike = unlike;

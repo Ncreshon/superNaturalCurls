@@ -51,3 +51,8 @@ app.post('/favorite', (req, res) => {
   };
   db.saveFav(entry)
 });
+
+app.post('/unlike', (req, res) => {
+  const video = req.body.video;
+ db.unlike({ urlId: video.id.videoId });
+});

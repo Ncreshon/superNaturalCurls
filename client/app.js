@@ -22,6 +22,14 @@ App.factory('Search', $http => ({
     },
     data: { video: video },
   }),
+  unlikeSearch: video => $http({
+    method: 'POST',
+    url: '/unlike',
+    headers: {
+      'Content-Type': "application/json",
+    },
+    data: { video: video },
+  }),
 }));
 App.controller('AppCtrl', ($scope, $sce, Search) => {
   $scope.producttext;
@@ -54,7 +62,6 @@ App.controller('AppCtrl', ($scope, $sce, Search) => {
 
 
   $scope.favorite = (video) => {
-    console.log(video.snippet)
     
     Search.favoriteSearch(video)
     .then(response => console.log(response))
@@ -62,6 +69,8 @@ App.controller('AppCtrl', ($scope, $sce, Search) => {
   }
 
   $scope.unlike = (video) => {
-    console.log(video);
+    Search.unlikeSearch(video)
+      .then(response => console.log(response))
+      .catch(err => console.log(err))
   };
 });
