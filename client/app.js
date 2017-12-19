@@ -8,7 +8,8 @@ App.factory('Search',  $http => ({
     headers: { search: query },
   }).then( (videos) => {
     console.log(videos.data)
-    $scope.styleVideos = videos.data})
+    // $scope.styleVideos = videos.data
+  })
   .catch((err) => {
     console.log(err);
   }),
@@ -22,6 +23,7 @@ App.factory('Search',  $http => ({
     }).catch( err => {
       console.log(err);
   }),
+  
 
 
 
