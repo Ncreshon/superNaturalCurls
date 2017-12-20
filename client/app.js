@@ -55,7 +55,7 @@ App.factory('Search', $http => ({
 }));
 App.controller('AppCtrl', ($scope, $sce, Search) => {
   $scope.producttext;
-  $scope.video = { id: { videoId: 'N8XCXdmM9nM' } };
+  $scope.video = { id: { videoId: 'u7TiyPKBYL0' } };
   $scope.test = 'https://www.youtube.com/embed/';
   $scope.trustSrc = function (src) {
     return $sce.trustAsResourceUrl(src);

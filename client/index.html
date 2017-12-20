@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Alegreya" rel="stylesheet" type="text/css">
   <title>Super Natural Curls</title>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.js"></script>
   <script src="app.js"></script>
@@ -20,7 +21,17 @@
 
 <link rel="stylesheet" type="text/css" href="style.css" />
 
+
+
+
+<nav  class="navbar navbar-toggleable-md navbar-light bg-faded">
+  <div>
+<img  class='magic' src='super.jpg'>
 <h1 class='header'>Super Natural Curls</h1>
+<img  class='magic1' src='super.jpg'>
+    </div>
+ 
+</nav>
 
 
 
@@ -30,74 +41,96 @@
   
   
   
-
-  <iframe width="420" height="315" ng-src="{{trustSrc(test + video.id.videoId)}}"/>
+<div class='player'>
+  <iframe width="420" height="315" align='middle' ng-src="{{trustSrc(test + video.id.videoId)}}"/>
   </iframe>
-  <div>
-<!-- like button -->
-<a ng-click="favorite(video)" class="btn btn-primary">
-  <span class="glyphicon glyphicon-heart"></span> Must try</a>
-  
+
+<div>
+  <!-- like button -->
+  <a ng-click="favorite(video)" class="btn">
+    <span class="glyphicon glyphicon-heart"></span> Must try</a>
+
   <!-- unlike button -->
-  <a ng-click="unlike(video)" class="btn btn-danger">
+  <a ng-click="unlike(video)" class="btn ">
     <span class="glyphicon glyphicon-trash"></span> It's trash</a>
 
-    <!-- upvote -->
-    <a ng-click="upvote(video)" class="btn btn-info">
-      <span class="glyphicon glyphicon-thumbs-up"></span> Sis, this is everything!</a>
+  <!-- upvote -->
+  <a ng-click="upvote(video)" class="btn ">
+    <span class="glyphicon glyphicon-thumbs-up"></span> Sis, this is everything!</a>
 
-      <a ng-click="downvote(video)" class="btn btn-info">
-        <span class="glyphicon glyphicon-thumbs-down"></span> Sis, what are you thinking?</a>
-     </div>
-
-
-  <h2>Super Natural Products</h2>
-  <form class='search'>
-    <input name="search" ng-model='producttext' value="text">
-    <button ng-click='productsubmit()' > Product Search</button>
-  </form>
-  <div></div>
-
-  <div class='title' ng-repeat='video in productVideos'>
-     
-    <div ng-click='titleSelect(video)'> 
-      <img src={{video.snippet.thumbnails.default.url}}>
-       {{video.snippet.title}}
-
-    </div>
+  <a ng-click="downvote(video)" class="btn ">
+    <span class="glyphicon glyphicon-thumbs-down"></span> Sis, what are you thinking?</a>
+</div>
   </div>
 
-  <h2>Super Natural Styles</h2>
-  
-  <form class='search'>
-    <input name="stylesearch" ng-model='styletext' value="text">
-    <button ng-click='stylesubmit()'> Style Search</button>
-  </form>
 
-  <div ng-repeat='video in styleVideos'> 
-    <div class='title' ng-click='titleSelect(video)'>
-      <img src={{video.snippet.thumbnails.default.url}}>
-       {{video.snippet.title}}
-    </div>
-    
+
+
+<div class="row">
+  <div class="col-xs-6 col-sm-4">
+<h2>Super Natural Styles</h2>
+
+<form class='search'>
+  <input name="stylesearch" ng-model='styletext' value="text">
+  <!-- <button ng-click='stylesubmit()'> Style Search</button> -->
+<a ng-click='stylesubmit()' class="btn ">
+  <span ></span> Style Search</a>
+</form>
+
+<div ng-repeat='video in styleVideos'>
+  <div class='title' ng-click='titleSelect(video)'>
+    <img src={{video.snippet.thumbnails.default.url}}> {{video.snippet.title}}
   </div>
 
-  <h2>Favorites</h2>
-  <div>
-    <a ng-click='rated()' class="btn btn-info">
-      <span class="glyphicon glyphicon-star"></span> Top Ten</a>
+</div>
+
+</div>
+
+
+
+
+  <div class="col-xs-6 col-sm-4">
+<h2>Super Natural Products</h2>
+<form class='search'>
+  <input name="search" ng-model='producttext' value="text">
+  <!-- <button ng-click='productsubmit()'> Product Search</button> -->
+<a ng-click='productsubmit()' class="btn ">
+  <span></span> Style Search</a>
+</form>
+
+<div class='title' ng-repeat='video in productVideos'>
+
+  <div ng-click='titleSelect(video)'>
+    <img src={{video.snippet.thumbnails.default.url}}> {{video.snippet.title}}
+
   </div>
- 
-  
-  <div ng-repeat='video in rated'>
-    <div class='title' ng-click='dbtitleSelect(video)'>
-       Rating: {{video.rating}}
-      <img src={{video.image}}>
-     {{video.title}}
-     
-    </div>
-  
+</div>
+</div>
+
+
+
+  <!-- Optional: clear the XS cols if their content doesn't match in height -->
+  <div class="clearfix visible-xs-block"></div>
+  <div class="col-xs-6 col-sm-4">
+<h2>Top Rated</h2>
+
+<a ng-click='rated()' class="btn">
+  <span class="glyphicon glyphicon-star"></span> Top Ten</a>
+
+
+<div ng-repeat='video in rated'>
+  <div class='title' ng-click='dbtitleSelect(video)'>
+    Rating: {{video.rating}}
+    <img src={{video.image}}> {{video.title}}
+
   </div>
+
+</div>
+
+
+
+  </div>
+</div>
 
 
 

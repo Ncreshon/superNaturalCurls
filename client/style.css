@@ -1,3 +1,6 @@
+body {
+  background-color: #67001a;
+}
 .search{
   height: 40px;
 }
@@ -19,16 +22,57 @@
 
 h1 {
   font-family: Lobster;
-  color: #830c15;
+  color: #D4AF37;
+  text-align: center;
   
 }
  h2 {
-   color: #662b22;
+   font-family: Lobster;
+   color: #D4AF37;
  }
 .title{
-  font-size: 20px;
-  color: 
+  font-size: 17px;
+  font-family: Alegreya;
+  color: #D4AF37;
+  font-weight: bold;
 }
-head {
-  background: green;
+nav {
+  background: #34000d;
+  
+}
+
+body {
+  background-image: url(bCxTDz.png);
+  background-repeat: repeat-x;
+}
+.magic {
+  float: left;
+  width: 200px;
+  height: 200px;
+  
+}
+.magic1 {
+  float: right;
+  width: 200px;
+  height: 200px;
+  
+}
+
+ h1 {
+  position: relative;
+  
+}
+
+a {
+  background-color: black;
+}
+
+.player {
+   margin: auto;
+   width: 50%;
+  
+}
+button {
+  background-color: black;
+  color: white;
 }
