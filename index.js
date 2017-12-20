@@ -1,10 +1,12 @@
 const express = require('express');
 
-let db = require('./client/db.js');
+const db = require('./client/db.js');
 
 const dotenv = require('dotenv');
 
 const path = require('path');
+
+var Promise = require("bluebird");
 
 const bodyparser = require('body-parser');
 
@@ -55,10 +57,22 @@ app.post('/favorite', (req, res) => {
 
 app.post('/unlike', (req, res) => {
   const video = req.body.video;
- db.unlike({ urlId: video.id.videoId });
- res.send('deleted');
+  db.unlike({ urlId: video.id.videoId });
+  res.send('deleted');
 });
 app.post('/upvote', (req, res) => {
-  const id = {urlId: req.body.video.id.videoId}
-db.upVote(id);
+  const id = { urlId: req.body.video.id.videoId };
+  db.upVote(id);
+  res.send('vote counted');
+});
+app.post('/downvote', (req, res) => {
+  const id = { urlId: req.body.video.id.videoId };
+  db.downVote(id);
+  res.send('vote counted');
+});
+app.get('/rated', (req, res) => {
+
+    db.rating().then(value => res.send(value)).catch(err => console.error(err, 'error'))
+  
+
 });

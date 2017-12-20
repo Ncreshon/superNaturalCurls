@@ -39,6 +39,18 @@ App.factory('Search', $http => ({
     },
     data: { video: video },
   }),
+  downSearch: video => $http({
+    method: 'POST',
+    url: '/downvote',
+    headers: {
+      'Content-Type': "application/json",
+    },
+    data: { video: video },
+  }),
+  getRated: () => $http({
+    method: 'GET',
+    url: '/rated',
+  }),
 
 }));
 App.controller('AppCtrl', ($scope, $sce, Search) => {
@@ -50,6 +62,7 @@ App.controller('AppCtrl', ($scope, $sce, Search) => {
   };
   $scope.styleVideos = [];
   $scope.productVideos = [];
+  $scope.rated = [];
   $scope.productsubmit = () => {
     Search.productSearch($scope.producttext).then((videos) => {
       $scope.productVideos = videos.data.items;
@@ -69,21 +82,37 @@ App.controller('AppCtrl', ($scope, $sce, Search) => {
   $scope.titleSelect = (video) => {
     $scope.video = video;
   },
+  $scope.dbtitleSelect = (video) => {
+    console.log(video)
+  },
 
 
   $scope.favorite = (video) => {
-    
     Search.favoriteSearch(video)
-    .then(response => console.log(response))
-    .catch(err => console.log(err))
+      .then(response => console.log(response))
+      .catch(err => console.log(err))
   }
 
   $scope.unlike = (video) => {
     Search.unlikeSearch(video)
       .then(response => console.log(response))
-      .catch(err => console.log(err))
+      .catch(err => console.log(err));
   };
   $scope.upvote = (video) => {
     Search.upSearch(video)
+      .then(response => console.log(response))
+      .catch(err => console.log(err));
+  };
+  $scope.downvote = (video) => {
+    Search.downSearch(video)
+      .then(response => console.log(response))
+      .catch(err => console.log(err));
+  };
+  $scope.rated = () => {
+   console.log('rated');
+   Search.getRated().then(videos => {
+     $scope.rated = videos.data;
+     console.log($scope.rated)
+   })
   };
 });
