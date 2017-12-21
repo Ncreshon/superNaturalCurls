@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-var Promise = require("bluebird");
+const Promise = require('bluebird');
 
 mongoose.connect('mongodb://Nicole:04250225@ds161426.mlab.com:61426/supernaturalcurls');
 
@@ -37,15 +37,15 @@ const unlike = (obj) => {
 };
 
 const upVote = (obj) => {
-  Favorite.update(obj, { $inc: { rating: 1 } }, err => {
-    console.error(err)
+  Favorite.update(obj, { $inc: { rating: 1 } }, (err) => {
+    console.error(err);
   });
-}
+};
 const downVote = (obj) => {
-  Favorite.update(obj, { $inc: { rating: -1 } }, err => {
-    console.error(err)
+  Favorite.update(obj, { $inc: { rating: -1 } }, (err) => {
+    console.error(err);
   });
-}
+};
 
 const rating = () => {
   return new Promise((resolve, reject) => {

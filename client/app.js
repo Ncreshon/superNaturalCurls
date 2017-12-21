@@ -109,10 +109,8 @@ App.controller('AppCtrl', ($scope, $sce, Search) => {
       .catch(err => console.log(err));
   };
   $scope.rated = () => {
-   console.log('rated');
-   Search.getRated().then(videos => {
-     $scope.rated = videos.data;
-     console.log($scope.rated)
-   })
+    Search.getRated().then(videos => {
+      $scope.rated = videos.data;
+    })
   };
 });

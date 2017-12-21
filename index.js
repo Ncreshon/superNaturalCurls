@@ -6,8 +6,6 @@ const dotenv = require('dotenv');
 
 const path = require('path');
 
-var Promise = require("bluebird");
-
 const bodyparser = require('body-parser');
 
 const youtubeSearch = require('./client/youtubeSearch.js');
@@ -71,8 +69,7 @@ app.post('/downvote', (req, res) => {
   res.send('vote counted');
 });
 app.get('/rated', (req, res) => {
-
-    db.rating().then(value => res.send(value)).catch(err => console.error(err, 'error'))
-  
-
+  db.rating()
+    .then(value => res.send(value))
+    .catch(err => console.error(err, 'error'));
 });
